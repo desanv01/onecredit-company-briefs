@@ -1,0 +1,372 @@
+{
+  "review_method": "Source-based AI-assisted paired review by two GPT-6.2 Sol Medium subagents, six unique cases each, using the frozen rubric. Version labels were masked during scoring and revealed for aggregation. Formatting may reveal the method.",
+  "scope": "Frozen holdout, baseline-v2 and evidence-selection-v1",
+  "score_dimensions": [
+    "factual_fidelity",
+    "due_diligence_priorities",
+    "caveats",
+    "readability_and_next_step"
+  ],
+  "version_key_by_registration": {
+    "SYN-000282": {
+      "A": "baseline",
+      "B": "candidate"
+    },
+    "SYN-000381": {
+      "A": "candidate",
+      "B": "baseline"
+    },
+    "SYN-000397": {
+      "A": "baseline",
+      "B": "candidate"
+    },
+    "SYN-000451": {
+      "A": "candidate",
+      "B": "baseline"
+    },
+    "SYN-000546": {
+      "A": "candidate",
+      "B": "baseline"
+    },
+    "SYN-000677": {
+      "A": "baseline",
+      "B": "candidate"
+    },
+    "SYN-001158": {
+      "A": "candidate",
+      "B": "baseline"
+    },
+    "SYN-001203": {
+      "A": "baseline",
+      "B": "candidate"
+    },
+    "SYN-001212": {
+      "A": "baseline",
+      "B": "candidate"
+    },
+    "SYN-001389": {
+      "A": "candidate",
+      "B": "baseline"
+    },
+    "SYN-001569": {
+      "A": "baseline",
+      "B": "candidate"
+    },
+    "SYN-001829": {
+      "A": "candidate",
+      "B": "baseline"
+    }
+  },
+  "results": [
+    {
+      "registrationNumber": "SYN-000282",
+      "A": {
+        "scores": [
+          2,
+          1,
+          1,
+          1
+        ],
+        "critical_errors": [],
+        "reason": "The stated FY2022 to FY2024 profit comparison is accurate, but the brief omits the more recent fall from RM2,026,448 in FY2023 to RM1,865,751 in FY2024 (financials.years[].statements.profitAfterTax). The FY2025 follow-up is proportionate, though the key financial point is obscured by secondary ratios."
+      },
+      "B": {
+        "scores": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "Shows higher revenue alongside lower after-tax profit versus FY2023, keeps the unqualified opinion tied to FY2024, and correctly identifies Director 1's 57.42% stake (financials.years, relationships.shareholders)."
+      },
+      "preference": "B",
+      "preference_reason": "B makes the latest profit decline visible alongside higher revenue and the majority ownership stake."
+    },
+    {
+      "registrationNumber": "SYN-000381",
+      "A": {
+        "scores": [
+          2,
+          1,
+          2,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "Correctly attributes the 51% shareholding to Gemilang Holdings and distinguishes profile.state (Kedah) from profile.natureOfBusiness (Kota Kinabalu). It reports the latest 1.36x quick ratio but omits the decrease from 2.16x in FY2022 (financials.years[].ratiosAndMetrics.liquidityAndCashFlow.quickRatio)."
+      },
+      "B": {
+        "scores": [
+          0,
+          1,
+          1,
+          1
+        ],
+        "critical_errors": [
+          "Wrong ownership threshold: the directors hold 24.89% and 24.11%, totaling 49%, while Gemilang Holdings holds the 51% majority (relationships.shareholders). Calling the directors a majority misidentifies the voting control implied by the recorded holdings."
+        ],
+        "reason": "Provides useful financial context and a specific location follow-up. The directors' asserted majority contradicts the shareholder percentages, the operating location is framed more definitively than the business description supports, and the falling quick ratio is omitted."
+      },
+      "preference": "A",
+      "preference_reason": "A correctly identifies the corporate majority shareholder and preserves the distinction between the two locations recorded in the profile."
+    },
+    {
+      "registrationNumber": "SYN-000397",
+      "A": {
+        "scores": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "critical_errors": [
+          "Misleading judgment amounts: RM58,600 and RM721,100 are claimAmount values for CASE-2022-4375 and CASE-2021-2966. Putting them directly after 'judgments have been entered' without labeling them as claims can be read as sums awarded, which the record does not supply."
+        ],
+        "reason": "Reports both pending claims and identifies the RM7,427,000 case as settled. The significant litigation appears after detailed financial and ownership discussion. The FY2022/FY2024 comparison is accurate, but the brief leaves the FY2023 absence implicit and blurs the distinction between claims and judgment amounts."
+      },
+      "B": {
+        "scores": [
+          2,
+          1,
+          2,
+          1
+        ],
+        "critical_errors": [],
+        "reason": "Leads with defendant litigation, labels the RM721,100 tenancy figure as a claim and explicitly identifies the FY2023 gap. It omits case-level details on the pending RM320,300 tenancy dispute (CASE-2025-7729) and the RM7,427,000 settled claim (CASE-2025-5402), though the status counts include both. Its court-record follow-up does not identify which matters to check first."
+      },
+      "preference": "B",
+      "preference_reason": "B distinguishes claimed amounts from judgments entered and identifies the missing financial year, although A provides fuller details on the pending and settled cases."
+    },
+    {
+      "registrationNumber": "SYN-000451",
+      "A": {
+        "scores": [
+          2,
+          1,
+          2,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "Correctly reports the FY2024 loss, operating cash outflow and negative equity, and directly asks how operations are being funded. Omits CASE-2025-0811 (dismissed defendant claim) and CASE-2021-8303 (settled plaintiff claim), both closed in the record."
+      },
+      "B": {
+        "scores": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "Captures the FY2024 equity and cash flow weakness, adds the history of losses and correctly distinguishes the two closed claims and their roles. The Kuala Lumpur incorporation and Penang operations wording overstates what profile.state and profile.natureOfBusiness establish. The financial follow-up is proportionate."
+      },
+      "preference": "A",
+      "preference_reason": "A keeps the profile locations properly attributed and gives a more direct funding follow-up for the negative equity and cash outflow."
+    },
+    {
+      "registrationNumber": "SYN-000546",
+      "A": {
+        "scores": [
+          2,
+          1,
+          1,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "Accurately identifies the FY2024 turnaround from FY2023 and reports current liquidity and cash flow. It leaves out the FY2023 operating cash inflow of RM3.11m and the quick-ratio decline from 1.66x to 1.35x (financials.years[].ratiosAndMetrics.liquidityAndCashFlow), giving less context for the recovery."
+      },
+      "B": {
+        "scores": [
+          2,
+          1,
+          2,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "Shows positive FY2023 operating cash flow alongside the net loss, and requests later accounts given the March 2024 year-end. The recovery is preceded by a long ownership introduction, and omitting FY2022 and the multi-year quick-ratio decline leaves the liquidity picture incomplete."
+      },
+      "preference": "B",
+      "preference_reason": "B shows that operating cash flow was positive while FY2023 still posted a loss and sets out a specific check on whether the FY2024 recovery held."
+    },
+    {
+      "registrationNumber": "SYN-000677",
+      "A": {
+        "scores": [
+          0,
+          1,
+          1,
+          2
+        ],
+        "critical_errors": [
+          "Misleading liquidity direction: the cash conversion cycle was 180.08 days in FY2023 and 173.02 in FY2024 (financials.years[].ratiosAndMetrics.operationalEfficiency.cashConversionCycle). The brief says it lengthened amid FY2023-to-FY2024 comparisons without identifying FY2022 as its possible comparator, misleading the reader about the latest working-capital movement."
+        ],
+        "reason": "Correctly identifies the pending RM211,500 plaintiff claim (CASE-2025-2755) and the shareholdings. In addition to the cash conversion cycle issue, the director and shareholder lists do not establish that overlap limits external oversight. The FY2025 accounts request is specific and proportionate."
+      },
+      "B": {
+        "scores": [
+          2,
+          2,
+          2,
+          1
+        ],
+        "critical_errors": [],
+        "reason": "Reports the pending debt-recovery claim as a plaintiff claim, gives the FY2023-to-FY2024 revenue and profit improvement, and accurately identifies the largest holding as 37.75%. The follow-up is generic for a plaintiff-only record and could focus on collectability of CASE-2025-2755."
+      },
+      "preference": "B",
+      "preference_reason": "B accurately presents profit and revenue growth and the pending plaintiff claim without implying a deterioration in the latest cash conversion cycle."
+    },
+    {
+      "registrationNumber": "SYN-001158",
+      "A": {
+        "scores": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "The sole FY2024 record supports the RM4.13m after-tax loss and negative RM1.06m operating cash flow. The brief states the one-year limit, records Director 1's 52.86% stake and asks for a cash-flow forecast and repayment schedule."
+      },
+      "B": {
+        "scores": [
+          1,
+          2,
+          1,
+          1
+        ],
+        "critical_errors": [],
+        "reason": "The loss, negative cash flow and coverage figures match FY2024. Calling 0.94x liabilities-to-equity high lacks a benchmark. The brief dates the figures but does not say FY2024 is the sole observation. The FY2025 accounts request is relevant and the dense ratio paragraph is harder to scan."
+      },
+      "preference": "A",
+      "preference_reason": "A states the single-year limit and makes the loss, cash-flow pressure and related next steps easier to scan."
+    },
+    {
+      "registrationNumber": "SYN-001203",
+      "A": {
+        "scores": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "Financials.years is empty. The brief explains the resulting evidence gap, requests audited accounts, gives Gemilang Holdings' 70% stake and distinguishes the RM22,500 plaintiff claim in CASE-2023-0273 from undisclosed settlement terms."
+      },
+      "B": {
+        "scores": [
+          2,
+          2,
+          2,
+          1
+        ],
+        "critical_errors": [],
+        "reason": "The brief leads with the missing statements and accurately labels the 70% stake and the settled plaintiff case, giving RM22,500 as the claim. It leaves the analyst without a specific follow-up on the financial evidence gap."
+      },
+      "preference": "A",
+      "preference_reason": "A explains what the missing financial statements prevent an analyst from assessing and identifies the specific records to request."
+    },
+    {
+      "registrationNumber": "SYN-001212",
+      "A": {
+        "scores": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "critical_errors": [
+          "Unsupported outcome and amount in the follow-up. CASE-2021-3977 records RM9,468,400 claimed and status Judgment entered, with no judgment sum or payment history. Asking whether the RM9.47m petition judgment remains unpaid presupposes that sum was ordered and remained unpaid."
+        ],
+        "reason": "The winding-up status, two petition claim amounts and FY2022–FY2024 profit decline are correctly reported. The two withdrawals are grouped without identifying CASE-2022-9319 as the company's own debt recovery claim. The follow-up presupposes judgment terms and payment history absent from the source."
+      },
+      "B": {
+        "scores": [
+          2,
+          1,
+          2,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "The status, seven defendant cases and one withdrawn plaintiff case match the record. The brief accurately lists two defendant petition judgments and labels the larger claim, but omits CASE-2022-3082's RM300,800 claim and the FY2022 profit comparison. Court filings and orders are a proportionate next check."
+      },
+      "preference": "B",
+      "preference_reason": "B keeps the petition claim distinct from any judgment amount or payment and directs the analyst to the current filings and orders."
+    },
+    {
+      "registrationNumber": "SYN-001389",
+      "A": {
+        "scores": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "The registry profile is active and CASE-2024-5611 is a pending RM50,100 defendant petition. The brief distinguishes the three petition statuses and makes the pending case prominent. The FY2023 and FY2024 profit figures are correct, though it skips the FY2022 comparator and the two closed petition amounts."
+      },
+      "B": {
+        "scores": [
+          0,
+          1,
+          2,
+          2
+        ],
+        "critical_errors": [
+          "Wrong direction for cash. FY2023 cash was RM2,163,212 and FY2024 cash was RM7,391,568. The brief says cash fell to RM7.39m from RM2.16m, reversing a material liquidity movement."
+        ],
+        "reason": "The FY2024 profit, leverage rise and pending RM50,100 petition are sourced, with a follow-up naming the pending docket. The petition sits below ownership and financial details. The cash direction contradicts the statements. The phrase 'others settled' leaves the withdrawn debt recovery case CASE-2025-8120 ambiguous."
+      },
+      "preference": "A",
+      "preference_reason": "A puts the pending winding-up petition up front and avoids reversing the cash trend."
+    },
+    {
+      "registrationNumber": "SYN-001569",
+      "A": {
+        "scores": [
+          1,
+          1,
+          2,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "The FY2022 disclaimer and the next two unqualified opinions match the raw audit fields, but the audit exception sits after ownership and financial details. The reported 1.53x leverage matches total liabilities to equity, while the immediate borrowings-to-equity wording leaves the ratio base unclear. The audit report and FY2025 accounts follow-up is specific."
+      },
+      "B": {
+        "scores": [
+          2,
+          2,
+          1,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "The brief leads with the exact FY2022 disclaimer and dates the FY2024 unqualified opinion and FY2023–FY2024 profit figures correctly. It leaves out the FY2023 unqualified opinion. The follow-up targets the historical audit issues and their treatment in later reporting."
+      },
+      "preference": "B",
+      "preference_reason": "B gives the historical disclaimer more prominence and directs the analyst to its treatment in later reporting."
+    },
+    {
+      "registrationNumber": "SYN-001829",
+      "A": {
+        "scores": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "The first bullet distinguishes the pending RM126,600 defendant tenancy case from the dismissed plaintiff action. The FY2024 profit and Director 2's 84.31% holding are correct. The plaintiff docket and amount are omitted, with its role and outcome preserved."
+      },
+      "B": {
+        "scores": [
+          0,
+          1,
+          2,
+          2
+        ],
+        "critical_errors": [],
+        "reason": "The roles, outcomes and claim amounts for both cases are accurate, but the pending case sits below the financial and ownership sections. The cash conversion cycle rose from 36.60 days in FY2023 to 38.32 in FY2024, contrary to the stated shortening in the FY2023–FY2024 comparison. The roughly two-day change is secondary to litigation triage. The profile also gives share capital without specifying paid-up status."
+      },
+      "preference": "A",
+      "preference_reason": "A leads with the still-pending tenancy claim and avoids the incorrect year-over-year working-capital direction."
+    }
+  ]
+}

@@ -22,3 +22,7 @@ jobs:
       - run: uv run ruff check app company_briefs tests
       - run: uv run ruff format --check app company_briefs tests
       - run: uv run python -m unittest discover -s tests
+      - run: >
+          uv run python -m company_briefs.evaluate data/companies.jsonl
+          summaries/baseline.jsonl summaries/evidence.jsonl
+          --run-log evaluation/run-log.jsonl --packet .runs/paired-review.md
