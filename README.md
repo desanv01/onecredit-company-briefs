@@ -170,3 +170,34 @@ Everything in this repo is synthetic. We made it up for this assessment.
 
 Assessment version: **2026.11** (`ds-v2026.11`). You can see what changed between versions in
 [`CHANGELOG.md`](CHANGELOG.md).
+
+## Reproduce the submission
+
+Run these commands from the repository root. Python 3.14 and the locked dependencies are managed by `uv`.
+
+```bash
+uv sync --locked
+uv run uvicorn app.main:app --port 8000
+```
+
+Open [localhost:8000](http://localhost:8000), select a company, and compare the `baseline` and `evidence`
+versions. The viewer reads saved JSONL files from `summaries/`.
+
+Run the offline evaluator against saved outputs and create a 12-case packet with version labels masked.
+
+```bash
+uv run python -m company_briefs.evaluate data/companies.jsonl summaries/baseline.jsonl summaries/evidence.jsonl --packet .runs/paired-review.md
+uv run python -m unittest discover -s tests
+```
+
+To regenerate, set `DEEPSEEK_API_KEY` in your environment or save it in a local, Git-ignored `.env.local`
+as `DEEPSEEK_API_KEY=your_key`. Calls use the official DeepSeek API and can incur charges.
+
+```bash
+uv run --env-file .env.local python -m company_briefs.batch
+uv run python -m company_briefs.evaluate data/companies.jsonl summaries/baseline.jsonl summaries/evidence.jsonl --run-log .runs/full/run-log.jsonl
+```
+
+The batch saves local checkpoints under `.runs/full/`. Rerun the same command to resume. A new dataset, code
+or model requires a fresh `--run-dir`. For a development subset, specify `--ids`, a separate `--run-dir` and
+a separate `--output` folder. Add `--retry-fallbacks` to retry saved evidence fallbacks.

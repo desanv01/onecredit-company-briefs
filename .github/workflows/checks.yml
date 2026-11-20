@@ -1,0 +1,24 @@
+name: Offline checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: false
+      - run: uv sync --locked
+      - run: uv run ruff check app company_briefs tests
+      - run: uv run ruff format --check app company_briefs tests
+      - run: uv run python -m unittest discover -s tests
