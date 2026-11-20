@@ -5,6 +5,7 @@ description = "Build, experiment with and evaluate a system that summarises comp
 requires-python = ">=3.14,<3.15"
 dependencies = [
   "fastapi",
+  "openai>=3.57.0",
   "pydantic",
   "uvicorn",
 ]
@@ -21,7 +22,7 @@ dev = [
 [tool.ruff]
 line-length = 128
 target-version = "py314"
-include = ["app/**/*.py"]
+include = ["app/**/*.py", "company_briefs/**/*.py", "tests/**/*.py"]
 
 [tool.ruff.lint]
 select = [

@@ -1,0 +1,198 @@
+{
+  "dataset_sha256": "4000b9537ce34c266e4d9aae2088a26c326f530297adfab1a829d7549932695d",
+  "dataset_sha256_lf": "4ac588ef336a0f5c361b2e896b4490c4da4a970ae261fa3240ba512b24747087",
+  "development_ids": [
+    "SYN-000029",
+    "SYN-000067",
+    "SYN-000165",
+    "SYN-000217",
+    "SYN-000286",
+    "SYN-000302",
+    "SYN-000545",
+    "SYN-000802"
+  ],
+  "review_cases": [
+    {
+      "registrationNumber": "SYN-000282",
+      "tags": [
+        "routine",
+        "majority-director"
+      ],
+      "expected_facts": [
+        "FY2024 revenue reached RM27.55m while profit after tax eased to RM1.87m from RM2.03m in FY2023.",
+        "Director 1 owns 57.42%."
+      ],
+      "traps": [
+        "Revenue rose across the supplied years, but after-tax profit did not rise every year.",
+        "No court cases are recorded; the record does not establish a clean legal history."
+      ]
+    },
+    {
+      "registrationNumber": "SYN-000381",
+      "tags": [
+        "routine",
+        "corporate-owner"
+      ],
+      "expected_facts": [
+        "FY2022-FY2024 revenue increased from RM8.99m to RM16.44m and after-tax profit from RM465k to RM975k.",
+        "Gemilang Holdings Sdn. Bhd. owns 51%.",
+        "The quick ratio fell from 2.16x to 1.36x over the same period."
+      ],
+      "traps": [
+        "The profile lists Kedah while the business description refers to Kota Kinabalu. Keep these fields distinct."
+      ]
+    },
+    {
+      "registrationNumber": "SYN-000397",
+      "tags": [
+        "financial-year-gap",
+        "defendant"
+      ],
+      "expected_facts": [
+        "The only supplied years are FY2022 and FY2024. After-tax profit fell between those two observations from RM418k to RM371k.",
+        "Pending defendant claims include the RM320.3k tenancy case CASE-2025-7729 and the RM458.4k breach-of-contract case CASE-2023-7966."
+      ],
+      "traps": [
+        "The RM7.427m defendant debt recovery case was settled. Its claim is neither pending exposure nor a payment.",
+        "Do not call the FY2022 to FY2024 comparison year-on-year."
+      ]
+    },
+    {
+      "registrationNumber": "SYN-000451",
+      "tags": [
+        "negative-equity",
+        "mixed-roles"
+      ],
+      "expected_facts": [
+        "FY2024 after-tax loss was RM275.6k, operating cash flow was negative RM138.9k and equity was negative RM18.5k.",
+        "The company was defendant in a dismissed debt recovery claim and plaintiff in a settled debt recovery claim."
+      ],
+      "traps": [
+        "The RM519.8k settled claim was filed by the company. Do not treat it as owed by or received by the company.",
+        "The profile lists Kuala Lumpur while the business description refers to Penang."
+      ]
+    },
+    {
+      "registrationNumber": "SYN-000546",
+      "tags": [
+        "profit-turnaround",
+        "liquidity"
+      ],
+      "expected_facts": [
+        "After-tax results moved from losses of RM27.12m in FY2022 and RM7.42m in FY2023 to profit of RM16.81m in FY2024.",
+        "Operating cash flow was positive in FY2023 and FY2024, reaching RM23.99m in FY2024."
+      ],
+      "traps": [
+        "Operating cash flow turned positive before after-tax profit did.",
+        "The quick ratio fell from 1.66x to 1.35x across the supplied years, despite the recovery in profitability."
+      ]
+    },
+    {
+      "registrationNumber": "SYN-000677",
+      "tags": [
+        "plaintiff-only",
+        "growth"
+      ],
+      "expected_facts": [
+        "The company is plaintiff in all five cases, including pending RM211.5k debt recovery CASE-2025-2755.",
+        "FY2024 revenue was RM16.94m and after-tax profit was RM1.63m, up from RM12.21m and RM828k in FY2023."
+      ],
+      "traps": [
+        "A pending plaintiff claim is not a payable or guaranteed collection.",
+        "Director 1's 37.75% is the largest holding, below majority ownership."
+      ]
+    },
+    {
+      "registrationNumber": "SYN-001158",
+      "tags": [
+        "single-fy",
+        "loss"
+      ],
+      "expected_facts": [
+        "FY2024 is the sole financial year, with revenue RM62.46m, after-tax loss RM4.13m and negative operating cash flow of RM1.06m.",
+        "Director 1 owns 52.86%."
+      ],
+      "traps": [
+        "One observation cannot establish deterioration, recovery or year-over-year growth."
+      ]
+    },
+    {
+      "registrationNumber": "SYN-001203",
+      "tags": [
+        "no-financials",
+        "plaintiff-only"
+      ],
+      "expected_facts": [
+        "No financial years are supplied.",
+        "Gemilang Holdings Sdn. Bhd. owns 70%.",
+        "The company was plaintiff in a settled RM22.5k breach-of-contract claim (CASE-2023-0273)."
+      ],
+      "traps": [
+        "Missing financials do not imply zero revenue or a financial condition.",
+        "The claim amount is not the settlement amount."
+      ]
+    },
+    {
+      "registrationNumber": "SYN-001212",
+      "tags": [
+        "winding-up-status",
+        "mixed-roles",
+        "judgment-entered"
+      ],
+      "expected_facts": [
+        "The registry profile status is Winding up.",
+        "Two defendant winding-up petitions show Judgment entered (CASE-2022-3082 and CASE-2021-3977), with RM300.8k and RM9.4684m claimed.",
+        "After-tax profit declined from RM405k in FY2022 to RM38.6k in FY2024."
+      ],
+      "traps": [
+        "Do not infer judgment terms, amounts awarded or recovery from case status and claim amounts.",
+        "The withdrawn debt recovery case is a plaintiff case."
+      ]
+    },
+    {
+      "registrationNumber": "SYN-001389",
+      "tags": [
+        "pending-winding-up-petition",
+        "defendant"
+      ],
+      "expected_facts": [
+        "The profile is Active and CASE-2024-5611 is a pending defendant winding-up petition with RM50.1k claimed.",
+        "FY2024 after-tax profit was RM4.01m, up from RM1.35m in FY2022."
+      ],
+      "traps": [
+        "A pending petition is not a registry status or a winding-up order.",
+        "The RM324k and RM601.6k winding-up petitions were withdrawn and settled, respectively."
+      ]
+    },
+    {
+      "registrationNumber": "SYN-001569",
+      "tags": [
+        "historical-audit-exception",
+        "routine"
+      ],
+      "expected_facts": [
+        "FY2022 had a disclaimer of opinion; FY2023 and FY2024 opinions were unqualified.",
+        "FY2024 revenue was RM6.26m and after-tax profit RM195k, down from RM228k in FY2023."
+      ],
+      "traps": [
+        "Do not imply that the disclaimer applies to FY2024 or claim that every supplied year was unqualified.",
+        "A disclaimer is distinct from an adverse or qualified opinion."
+      ]
+    },
+    {
+      "registrationNumber": "SYN-001829",
+      "tags": [
+        "mixed-roles",
+        "pending-defendant"
+      ],
+      "expected_facts": [
+        "The company was defendant in pending RM126.6k tenancy case CASE-2021-3062 and plaintiff in dismissed RM161.7k breach-of-contract case CASE-2021-4654.",
+        "Director 2 owns 84.31%. FY2024 after-tax profit was RM1.50m."
+      ],
+      "traps": [
+        "The older tenancy filing is listed as pending despite its age.",
+        "The dismissed case was brought by the company."
+      ]
+    }
+  ]
+}
