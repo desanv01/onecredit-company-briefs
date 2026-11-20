@@ -221,10 +221,7 @@ def validate_logs(paths, source, baseline_path, candidate_path, baseline, candid
     for version, indexed in outputs.items():
         logged = {registration for logged_version, registration in seen_pairs if logged_version == version}
         if missing := indexed.keys() - logged:
-            print(
-                f"Run log ({version}): no matching entry for {len(missing)}/{len(indexed)} saved summaries",
-                file=sys.stderr,
-            )
+            errors.append(f"Run log ({version}): no matching entry for {len(missing)}/{len(indexed)} saved summaries")
     for version, rows in sorted(by_version.items()):
         statuses = Counter(row["status"] for row in rows)
         print(
@@ -306,17 +303,20 @@ def main(argv=None):
         describe_outputs("Baseline", args.baseline, baseline, source, review_ids, baseline_errors)
         describe_outputs("Candidate", args.candidate, candidate, source, review_ids, candidate_errors)
         errors = baseline_errors + candidate_errors
+        for name, indexed in (("Baseline", baseline), ("Candidate", candidate)):
+            if missing := source.keys() - indexed.keys():
+                errors.append(f"{name}: missing {len(missing)}/{len(source)} source records")
         if args.run_log:
             errors.extend(validate_logs(args.run_log, source, args.baseline, args.candidate, baseline, candidate))
         if errors:
             print("\n".join(errors), file=sys.stderr)
         packet = paired_review(cases, source, args.data, baseline, candidate, reveal=args.reveal)
         if args.packet:
+            args.packet.parent.mkdir(parents=True, exist_ok=True)
             args.packet.write_text(packet, encoding="utf-8", newline="\n")
         else:
             print(packet, end="")
-        incomplete_review = review_ids - (baseline.keys() & candidate.keys())
-        return int(bool(errors or incomplete_review))
+        return int(bool(errors))
     except (OSError, TypeError, ValueError) as error:
         print(f"Evaluation failed: {error}", file=sys.stderr)
         return 1

@@ -186,12 +186,12 @@ versions. The viewer reads saved JSONL files from `summaries/`.
 Run the offline evaluator against saved outputs and create a 12-case packet with version labels masked.
 
 ```bash
-uv run python -m company_briefs.evaluate data/companies.jsonl summaries/baseline.jsonl summaries/evidence.jsonl --packet .runs/paired-review.md
+uv run python -m company_briefs.evaluate data/companies.jsonl summaries/baseline.jsonl summaries/evidence.jsonl --run-log evaluation/run-log.jsonl --packet .runs/paired-review.md
 uv run python -m unittest discover -s tests
 ```
 
-To regenerate, set `DEEPSEEK_API_KEY` in your environment or save it in a local, Git-ignored `.env.local`
-as `DEEPSEEK_API_KEY=your_key`. Calls use the official DeepSeek API and can incur charges.
+To regenerate, save `DEEPSEEK_API_KEY=your_key` in a local, Git-ignored `.env.local`. If the key is already
+in your environment, omit `--env-file .env.local`. Calls use the official DeepSeek API and can incur charges.
 
 ```bash
 uv run --env-file .env.local python -m company_briefs.batch

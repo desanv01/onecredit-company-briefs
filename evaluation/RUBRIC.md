@@ -6,13 +6,13 @@ The manifest was frozen from the source records before inspecting generated brie
 
 ## Run the review
 
-From the checkout root, use the project Python environment. Create the output directory first if needed. The optional run log uses the output filenames without their extensions as version names.
+From the checkout root, use the project Python environment. The optional run log uses the output filenames without their extensions as version names.
 
 ```bash
 python -m company_briefs.evaluate data/companies.jsonl summaries/baseline.jsonl summaries/evidence.jsonl --packet .runs/paired-review.md
 ```
 
-Add `--run-log PATH` for telemetry and candidate trace checks. The command reports JSONL/schema errors, source and held-out coverage, and median word count on stderr. With logs, it also reports measured telemetry, missing log entries and candidate trace errors. The candidate check validates its saved selection, resolves its source pointers and re-renders the saved brief using the current code. A resolvable source pointer can still support a poorly chosen fact or an incorrect interpretation. Run trace checks with the same code revision used to generate the summaries. A nonzero exit signals an input error, invalid JSONL or trace, or a missing brief on the held-out set.
+Add `--run-log PATH` for telemetry and candidate trace checks. The command reports JSONL/schema errors, source and held-out coverage, and median word count on stderr. With logs, it also reports measured telemetry, missing log entries and candidate trace errors. The candidate check validates its saved selection, resolves its source pointers and re-renders the saved brief using the current code. A resolvable source pointer can still support a poorly chosen fact or an incorrect interpretation. Run trace checks with the same evidence and rendering code used to generate the summaries. A nonzero exit signals an input error, invalid JSONL or trace, or a missing brief or expected log row.
 
 Read both briefs and the original record. Score A and B independently, recording a short reason and the source field or case number for material errors and omissions. Keep the version key closed until the scores and preference are written down. Formatting can still make a version recognizable.
 
